@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params" addfieldpath="plugins/system/optimizely/forms/fields">
+		<fieldset
+			name="optimizely"
+			label="PLG_SYS_OPTIMIZELY_OPTIONS"
+			>
+
+			<field
+				name="optimizely"
+				type="radio"
+				label="PLG_SYS_OPTIMIZELY_ENABLE_OPTIMIZELY_LABEL"
+				description="PLG_SYS_OPTIMIZELY_ENABLE_OPTIMIZELY_DESC"
+				default=""
+				class="btn-group"
+			>
+				<option value="">JDEFAULT</option>
+				<option value="1">JENABLED</option>
+				<option value="0">JDISABLED</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

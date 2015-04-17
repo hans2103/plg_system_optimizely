@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYS_OPTIMIZELY</name>
+	<author>Hans Kuijpers</author>
+	<creationDate>April 2015</creationDate>
+	<copyright>Copyright (C) 2015 Hans Kuijpers</copyright>
+	<license>GPLv3 http://www.gnu.org/licenses/gpl.html</license>
+	<authorEmail>info@hkweb.nl</authorEmail>
+	<authorUrl>http://www.hkweb.nl/</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_SYS_OPTIMIZELY_DESC</description>
+	<files>
+		<filename plugin="optimizely">optimizely.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_optimizely.ini</language>
+		<language tag="en-GB">en-GB.plg_system_optimizely.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="projectid"
+					type="text"
+					default=""
+					label="PLG_SYS_OPTIMIZELY_PROJECTID_LABEL"
+					description="PLG_SYS_OPTIMIZELY_PROJECTID_DESC" />
+
+				<field
+					name="defaultmode"
+					type="radio"
+					default="0"
+					label="PLG_SYS_OPTIMIZELY_DEFAULTMODE_LABEL"
+					description="PLG_SYS_OPTIMIZELY_DEFAULTMODE_DESC"
+					class="btn-group btn-group-yesno"
+				>
+					<option value="1">JENABLED</option>
+					<option value="0">JDISABLED</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
