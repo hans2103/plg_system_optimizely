@@ -47,20 +47,6 @@ class plgSystemOptimizely extends JPlugin
 	private $urlPlugin;
 
 	/**
-	 * Components where the plugin is allowed to be loaded
-	 *
-	 * @var  array
-	 */
-	private $componentsEnabled = array('*');
-
-	/**
-	 * Views where the plugin is allowed to be loaded
-	 *
-	 * @var  array
-	 */
-	private $viewsEnabled 		= array('*');
-
-	/**
 	 * Is this plugin enabled in frontend?
 	 *
 	 * @var  boolean
@@ -125,7 +111,7 @@ class plgSystemOptimizely extends JPlugin
 			// Get the generated content
 			$body = JResponse::getBody();
 
-			// Remove JCaption JS calls
+			// Load Optmizely code
 			$pattern     = '<head>';
 			$replacement = '<head>
   <script src="//cdn.optimizely.com/js/'.$projectid.'.js"></script>';
