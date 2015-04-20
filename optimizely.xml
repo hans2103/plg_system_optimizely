@@ -7,9 +7,10 @@
 	<license>GPLv3 http://www.gnu.org/licenses/gpl.html</license>
 	<authorEmail>info@hkweb.nl</authorEmail>
 	<authorUrl>http://www.hkweb.nl/</authorUrl>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>PLG_SYS_OPTIMIZELY_DESC</description>
 	<files>
+		<folder>forms</folder>
 		<filename plugin="optimizely">optimizely.php</filename>
 		<filename>index.html</filename>
 	</files>
