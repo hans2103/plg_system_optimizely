@@ -13,7 +13,7 @@ Features
 
 Version 
 ---------------
-**Plugin version:** 1.0.2
+**Plugin version:** 1.0.3
 
 Install
 ---------------
@@ -28,6 +28,7 @@ When editing a menu you will see a new pane called "Optimizely enable/disable". 
 
 Release history 
 ---------------
+* v.1.0.3 -> House cleaning and adding a class to body tag to indicate running A/B test. Useful for Google Tag Manager triggers. thx Peter van Westen (@NoNumber)
 * v.1.0.2 -> Fixed missing parameter on install
 * v.1.0.1 -> House cleaning
 * v.1.0.0 -> First stable version  
