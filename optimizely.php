@@ -111,7 +111,6 @@ class plgSystemOptimizely extends JPlugin
 
 		// Get the generated content
 		$body = JResponse::getBody();
-		var_dump($body);die;
 
 		// Add Optimizely Script to <head>
 		$body = $this->addScriptToHead($body, $projectid);
