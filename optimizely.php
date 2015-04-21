@@ -94,34 +94,77 @@ class plgSystemOptimizely extends JPlugin
 		// Validate view
 		if (!$this->validateUrl())
 		{
-			return true;
+			return;
 		}
 
 		// Required objects
-		$app        = JFactory::getApplication();
-		$doc        = JFactory::getDocument();
-		$pageParams = $app->getParams();
+		$pageParams = JFactory::getApplication()->getParams();
 		$projectid  = $this->params->get('projectid', 0);
 
 		// Check if we have to disable Mootools for this item
 		$mode = $pageParams->get('optimizely', $this->params->get('defaultMode', 0));
 
-		if ($mode && boolval($projectid))
+		if (!$mode || !boolval($projectid))
 		{
-			// Get the generated content
-			$body = JResponse::getBody();
-
-			// Load Optmizely code
-			$pattern     = '<head>';
-			$replacement = '<head>
-  <script src="//cdn.optimizely.com/js/'.$projectid.'.js"></script>';
-			$body        = str_replace($pattern, $replacement, $body);
-
-			JResponse::setBody($body);
+			return;
 		}
 
-		return true;
+		// Get the generated content
+		$body = JResponse::getBody();
+		var_dump($body);die;
+
+		// Add Optimizely Script to <head>
+		$body = $this->addScriptToHead($body, $projectid);
+
+		// Add class to <body>
+		$body = $this->addClassToBody($body, 'possible-ab-test');
+
+		// return the new body
+		JResponse::setBody($body);
 	}
+
+	/**
+	 * Add optimizely script directly after head tag
+	 *
+	 * @param   string  $html  html that should contain the <head> tag
+	 * @param   string  $projectid  the optimizely project id
+	 *
+	 * @return string
+	 */
+	private function addScriptToHead($html, $projectid)
+	{
+		return preg_replace(
+			'#<head.*?>#',
+			'\0' . "\n  " . '<script src="//cdn.optimizely.com/js/' . $projectid . '.js"></script>',
+			$html, 1
+		);
+	}
+
+	/**
+	 * Add class to body tag
+	 *
+	 * @param   string  $html  html that should contain the <body> tag
+	 * @param   string  $class  the class to indacate a running A/B test (useful for Google Tag Manager)
+	 *
+	 * @return string
+	 */
+	private function addClassToBody($html, $class)
+	{
+		if(!preg_match('#<body([^>]*)>#s', $html, $match))
+		{
+			return $html;
+		}
+
+		if(strpos($match['1'], 'class="') !== false)
+		{
+			$body_tag = str_replace('class="', 'class="' . $class . ' ', $match['0']);
+
+			return str_replace($match['0'], $body_tag, $html);
+		}
+
+		return str_replace('<body', '<body class="' . $class . '"', $html);
+	}
+
 
 	/**
 	 * Change forms before they are shown to the user
