@@ -28,6 +28,6 @@ When editing a menu you will see a new pane called "Optimizely enable/disable". 
 
 Release history 
 ---------------
-v.1.0.2 -> Fixed missing parameter on install
-v.1.0.1 -> House cleaning
-v.1.0.0 -> First stable version  
+* v.1.0.2 -> Fixed missing parameter on install
+* v.1.0.1 -> House cleaning
+* v.1.0.0 -> First stable version  
